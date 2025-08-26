@@ -114,6 +114,8 @@ ul {
   display: flex;
   flex-direction: column;
   gap: ${LAYOUT.HIERARCHY_GAP};
+  max-width: fit-content;
+  min-width: 200px;
 }
 
 .hierarchy-list li {
@@ -123,7 +125,7 @@ ul {
 .node-content {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
   padding: ${LAYOUT.NODE_PADDING};
   border-radius: ${LAYOUT.BORDER_RADIUS};
   cursor: pointer;
@@ -131,6 +133,8 @@ ul {
   transition: ${LAYOUT.TRANSITION};
   position: relative;
   z-index: 3;
+  font-size: 0.8125rem;
+  line-height: 1.2;
 }
 
 .node-content:hover {
@@ -139,41 +143,43 @@ ul {
 
 .node-content.empty-folder {
   cursor: default;
-  opacity: 0.6;
+  opacity: 0.4;
+  filter: grayscale(0.5);
+  pointer-events: none;
 }
 
 .node-content::before {
   content: "";
   position: absolute;
-  left: -0.5rem;
+  left: -0.25rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 0.25rem;
-  height: 1.5rem;
+  width: 0.125rem;
+  height: 1rem;
   background-color: var(--colorWhite);
-  border-radius: 0.125rem;
-  opacity: 0.3;
+  border-radius: 0.0625rem;
+  opacity: 0.2;
   transition: ${LAYOUT.TRANSITION};
 }
 
 .node-content::after {
   content: "";
   position: absolute;
-  left: -0.75rem;
+  left: -0.5rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1rem;
+  height: 1rem;
   background-color: #111827;
   border-radius: 50%;
   box-shadow: none;
-  filter: opacity(0.2);
+  filter: opacity(0.15);
   z-index: 2;
 }
 
 .node-content:hover::after {
   background-color: var(--colorWhite);
-  filter: opacity(0.08);
+  filter: opacity(0.05);
 }
 	`;
 }
@@ -183,6 +189,15 @@ ul {
  */
 function generateHierarchyStyles() {
   return `
+.diagram-container {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  width: fit-content;
+  min-height: 100px;
+  padding: 0.5rem;
+}
+
 .hierarchy-list li[aria-expanded="false"] > ul {
   display: none;
 }

@@ -1,35 +1,39 @@
 import { DRAWING } from "../shared/constants.js";
 import {
   appendChild,
+  applyConditionalTranslateX,
+  calculateChildOffset,
+  calculatePathData,
   clearInnerHTML,
   createSVGPath,
   getElementRect,
   getNodeColor,
   queryAll,
+  resetTransforms,
   setAttribute,
 } from "../utils/docsModel.js";
 
 /**
  * Core logic for drawing connection lines between tree nodes
+ *
+ * Refactored to use consolidated utility functions from docsModel.js
+ * for transform operations, child positioning, and SVG path calculations.
+ * This reduces code duplication and improves maintainability.
  */
 
 /**
  * Draws connecting lines between parent and child nodes in the tree
  */
 export function drawConnectionLines(diagramContainer, svg) {
-  
   clearInnerHTML(svg);
 
-  
   setAttribute(svg, "width", diagramContainer.scrollWidth);
   setAttribute(svg, "height", diagramContainer.scrollHeight);
 
   const containerRect = getElementRect(diagramContainer);
 
-  
   resetNodeStyles();
 
-  
   queryAll(".hierarchy-list li").forEach((parentLi) => {
     const childUl = parentLi.querySelector(":scope > ul");
     const isExpanded = parentLi.getAttribute("aria-expanded") === "true";
@@ -44,16 +48,12 @@ export function drawConnectionLines(diagramContainer, svg) {
  * Resets node styles (transforms and branch colors)
  */
 function resetNodeStyles() {
-  
   const allListItems = queryAll(".hierarchy-list li");
   allListItems.forEach((li) => {
     li.style.removeProperty("--branch-color");
   });
 
-  
-  queryAll(".hierarchy-list .node-content").forEach((nodeContent) => {
-    nodeContent.style.transform = "";
-  });
+  resetTransforms(".hierarchy-list .node-content");
 }
 
 /**
@@ -101,66 +101,33 @@ function drawSingleConnection(
   const childContent = childLi.querySelector(":scope > .node-content");
   const childRect = getElementRect(childContent);
 
-  
-  let xOffset = 0;
-  if (childCount > 1) {
-    xOffset = (childCount - 1 - index) * DRAWING.CHILD_OFFSET_MULTIPLIER;
-  }
+  // Use utility function to calculate offset
+  const xOffset = calculateChildOffset(
+    childCount,
+    index,
+    DRAWING.CHILD_OFFSET_MULTIPLIER
+  );
 
-  
   const cX = childRect.left - containerRect.left - 6 + xOffset;
   const cY = childRect.top - containerRect.top + childRect.height / 2;
 
-  
-  if (xOffset > 0) {
-    childContent.style.transform = `translateX(${xOffset}px)`;
-  }
+  applyConditionalTranslateX(childContent, xOffset);
 
-  
-  const pathData = calculatePathData(pX, pY, cX, cY, xOffset);
+  // Calculate path using utility function with drawing constants
+  const horizontalLength =
+    DRAWING.HORIZONTAL_LENGTH + xOffset * DRAWING.HORIZONTAL_OFFSET_FACTOR;
+  const pathData = calculatePathData(
+    pX,
+    pY,
+    cX,
+    cY,
+    xOffset,
+    horizontalLength,
+    DRAWING.CORNER_RADIUS
+  );
   const path = createConnectionPath(pathData, childColor, parentLi, childLi);
 
   appendChild(svg, path);
-}
-
-/**
- * Calculates SVG path data for connecting two points
- */
-function calculatePathData(pX, pY, cX, cY, xOffset) {
-  const horizontalLength =
-    DRAWING.HORIZONTAL_LENGTH + xOffset * DRAWING.HORIZONTAL_OFFSET_FACTOR;
-  const cornerRadius = DRAWING.CORNER_RADIUS;
-  const midX = pX + horizontalLength;
-
-  
-  if (Math.abs(pY - cY) <= cornerRadius * 2) {
-    return `M ${pX} ${pY} L ${cX} ${cY}`;
-  }
-
-  const horizontalEnd = Math.min(midX + cornerRadius, cX);
-
-  
-  if (pY < cY) {
-    return `
-			M ${pX} ${pY}
-			L ${midX - cornerRadius} ${pY}
-			Q ${midX} ${pY} ${midX} ${pY + cornerRadius}
-			L ${midX} ${cY - cornerRadius}
-			Q ${midX} ${cY} ${horizontalEnd} ${cY}
-			L ${cX} ${cY}
-		`;
-  }
-  
-  else {
-    return `
-			M ${pX} ${pY}
-			L ${midX - cornerRadius} ${pY}
-			Q ${midX} ${pY} ${midX} ${pY - cornerRadius}
-			L ${midX} ${cY + cornerRadius}
-			Q ${midX} ${cY} ${horizontalEnd} ${cY}
-			L ${cX} ${cY}
-		`;
-  }
 }
 
 /**

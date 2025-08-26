@@ -148,12 +148,12 @@ export const SPECIAL_FILES = {
 export const CONFIG_PATTERNS = ["config", "settings"];
 
 export const DRAWING = {
-  CORNER_RADIUS: 24,
-  HORIZONTAL_LENGTH: 30,
-  STROKE_WIDTH: 0.72,
-  FOLDER_STROKE_OPACITY: 0.6,
-  STROKE_DASHARRAY: "3, 3",
-  CHILD_OFFSET_MULTIPLIER: 12,
+  CORNER_RADIUS: 8,
+  HORIZONTAL_LENGTH: 16,
+  STROKE_WIDTH: 0.5,
+  FOLDER_STROKE_OPACITY: 0.4,
+  STROKE_DASHARRAY: "2, 2",
+  CHILD_OFFSET_MULTIPLIER: 8,
   HORIZONTAL_OFFSET_FACTOR: 0.5,
   REDRAW_DELAY: 50,
 };
@@ -211,11 +211,11 @@ export const CSS_COLORS = {
 };
 
 export const LAYOUT = {
-  ICON_SIZE: "1.25rem",
-  NODE_PADDING: "0.5rem 0.75rem",
-  HIERARCHY_GAP: "0.25rem",
-  BORDER_RADIUS: "0.375rem",
-  TRANSITION: "all 0.2s ease-in-out",
+  ICON_SIZE: "0.875rem",
+  NODE_PADDING: "0.125rem 0.375rem",
+  HIERARCHY_GAP: "0.1rem",
+  BORDER_RADIUS: "0.25rem",
+  TRANSITION: "all 0.15s ease-in-out",
 };
 
 export const EVENTS = {

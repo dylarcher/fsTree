@@ -58,12 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
 				li.style.removeProperty("--branch-color");
 			});
 
-			document
-				.querySelectorAll(".hierarchy-list .node-content")
-				.forEach((nodeContent) => {
-					nodeContent.style.transform = "";
-				});
-
 			document.querySelectorAll(".hierarchy-list li").forEach((parentLi) => {
 				const childUl = parentLi.querySelector(":scope > ul");
 				const isExpanded = parentLi.getAttribute("aria-expanded") === "true";
@@ -93,9 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						let cX, cY;
 						cX = childRect.left - containerRect.left - 6 + xOffset;
 						cY = childRect.top - containerRect.top + childRect.height / 2;
-						if (xOffset > 0) {
-							childContent.style.transform = \`translateX(\${xOffset}px)\`;
-						}
+
 						const horizontalLength = ${DRAWING.HORIZONTAL_LENGTH} + xOffset * ${DRAWING.HORIZONTAL_OFFSET_FACTOR};
 						const cornerRadius = ${DRAWING.CORNER_RADIUS};
 						const midX = pX + horizontalLength;
@@ -350,17 +342,17 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 export function generateAsyncScript() {
   return `
-(async function() {
-	const { setupEventListeners } = await import('./core/eventManagment.js');
-	const { drawConnectionLines } = await import('./core/pathCoordinator.js');
+    (async function() {
+      const { setupEventListeners } = await import('./core/eventManagment.js');
+      const { drawConnectionLines } = await import('./core/pathCoordinator.js');
 
-	document.addEventListener("DOMContentLoaded", () => {
-		const diagramContainer = document.getElementById("diagram-container");
-		const svg = document.getElementById("svg-container");
+      document.addEventListener("DOMContentLoaded", () => {
+        const diagramContainer = document.getElementById("diagram-container");
+        const svg = document.getElementById("svg-container");
 
-		drawConnectionLines(diagramContainer, svg);
-		setupEventListeners(diagramContainer, svg);
-	});
-})();
+        drawConnectionLines(diagramContainer, svg);
+        setupEventListeners(diagramContainer, svg);
+      });
+    })();
 	`;
 }

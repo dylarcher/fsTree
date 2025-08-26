@@ -1,5 +1,13 @@
 /**
  * DOM manipulation and utility functions
+ *
+ * Enhanced with transform utilities and SVG path generation functions
+ * to consolidate common functionality used across tree visualization components.
+ *
+ * Recent additions:
+ * - Transform utilities: setTranslateX, clearTransform, applyConditionalTranslateX, resetTransforms
+ * - Child positioning: calculateChildOffset
+ * - SVG path generation: calculatePathData
  */
 
 /**
@@ -168,6 +176,76 @@ export function setTransform(element, transform) {
  */
 export function clearTransform(element) {
   element.style.transform = "";
+}
+
+/**
+ * Applies translateX transform to element
+ */
+export function setTranslateX(element, xOffset) {
+  element.style.transform = `translateX(${xOffset}px)`;
+}
+
+/**
+ * Resets transforms for multiple elements matching a selector
+ */
+export function resetTransforms(selector, context = document) {
+  const elements = queryAll(selector, context);
+  elements.forEach((element) => clearTransform(element));
+}
+
+/**
+ * Applies translateX transform conditionally based on offset value
+ */
+export function applyConditionalTranslateX(element, xOffset) {
+  if (xOffset > 0) {
+    setTranslateX(element, xOffset);
+  } else {
+    clearTransform(element);
+  }
+}
+
+/**
+ * Calculates horizontal offset for child nodes to create staggered effect
+ */
+export function calculateChildOffset(childCount, index, offsetMultiplier) {
+  return childCount > 1 ? (childCount - 1 - index) * offsetMultiplier : 0;
+}
+
+/**
+ * Calculates SVG path data for connecting two points with rounded corners
+ */
+export function calculatePathData(pX, pY, cX, cY, xOffset, horizontalLength, cornerRadius) {
+  const midX = pX + horizontalLength;
+
+  // Simple line if points are close vertically
+  if (Math.abs(pY - cY) <= cornerRadius * 2) {
+    return `M ${pX} ${pY} L ${cX} ${cY}`;
+  }
+
+  const horizontalEnd = Math.min(midX + cornerRadius, cX);
+
+  // Downward path
+  if (pY < cY) {
+    return `
+      M ${pX} ${pY}
+      L ${midX - cornerRadius} ${pY}
+      Q ${midX} ${pY} ${midX} ${pY + cornerRadius}
+      L ${midX} ${cY - cornerRadius}
+      Q ${midX} ${cY} ${horizontalEnd} ${cY}
+      L ${cX} ${cY}
+    `;
+  }
+  // Upward path
+  else {
+    return `
+      M ${pX} ${pY}
+      L ${midX - cornerRadius} ${pY}
+      Q ${midX} ${pY} ${midX} ${pY - cornerRadius}
+      L ${midX} ${cY + cornerRadius}
+      Q ${midX} ${cY} ${horizontalEnd} ${cY}
+      L ${cX} ${cY}
+    `;
+  }
 }
 
 /**

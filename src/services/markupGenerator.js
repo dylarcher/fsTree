@@ -27,12 +27,12 @@ function generateNodeMarkup(node) {
       : "";
 
     return `
-		<li data-id="${id}" class="folder${emptyClass}" aria-expanded="true" data-route="${route}" data-color="${color}">
+		<li data-id="${id}" class="folder${emptyClass}" aria-expanded="false" data-route="${route}" data-color="${color}">
 			<div class="node-content${emptyClass}">
-				<svg class="icon icon-collapsed dir" aria-expanded="true" style="color: var(--color${color})">
+				<svg class="icon icon-collapsed dir" aria-expanded="false" style="color: var(--color${color})">
 					<use xlink:href="${ICONS.FOLDER}" />
 				</svg>
-				<svg class="icon icon-expanded dir" aria-expanded="true" style="color: var(--color${color})">
+				<svg class="icon icon-expanded dir" aria-expanded="false" style="color: var(--color${color})">
 					<use xlink:href="${ICONS.DIR}" />
 				</svg>
 				<span style="color: var(--color${color})">${name}/</span>
@@ -77,12 +77,12 @@ export function generateTreeMarkup(rootNode) {
 
   return `
 	<ul class="hierarchy-list" data-level="0">
-		<li data-id="${id}" class="folder" aria-expanded="true" data-route="${route}" data-color="${color}">
+		<li data-id="${id}" class="folder" aria-expanded="false" data-route="${route}" data-color="${color}">
 			<div class="node-content">
-				<svg class="icon icon-collapsed dir" aria-expanded="true" style="color: var(--color${color})">
+				<svg class="icon icon-collapsed dir" aria-expanded="false" style="color: var(--color${color})">
 					<use xlink:href="${ICONS.FOLDER}" />
 				</svg>
-				<svg class="icon icon-expanded dir" aria-expanded="true" style="color: var(--color${color})">
+				<svg class="icon icon-expanded dir" aria-expanded="false" style="color: var(--color${color})">
 					<use xlink:href="${ICONS.DIR}" />
 				</svg>
 				<span style="color: var(--color${color})">${name}/</span>

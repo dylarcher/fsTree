@@ -14,16 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return computedStyle.color;
       }
 
-      const allListItems = document.querySelectorAll(".hierarchy-list li");
-      allListItems.forEach((li) => {
-        li.style.removeProperty("--branch-color");
-      });
-
-      document
-        .querySelectorAll(".hierarchy-list .node-content")
-        .forEach((nodeContent) => {
-          nodeContent.style.transform = "";
-        });
+      // Reset all node styles using TransformUtils
+      TransformUtils.resetHierarchyNodeStyles();
 
       document.querySelectorAll(".hierarchy-list li").forEach((parentLi) => {
         const childUl = parentLi.querySelector(":scope > ul");
@@ -46,71 +38,34 @@ document.addEventListener("DOMContentLoaded", () => {
               ":scope > .node-content"
             );
             const childRect = childContent.getBoundingClientRect();
-            let xOffset = 0;
-            if (childCount > 1) {
-              xOffset = (childCount - 1 - index) * 12;
-            }
+
+            // Use TransformUtils to calculate offset
+            const xOffset = TransformUtils.calculateChildOffset(
+              childCount,
+              index
+            );
 
             let cX, cY;
             cX = childRect.left - containerRect.left - 6 + xOffset;
             cY = childRect.top - containerRect.top + childRect.height / 2;
-            if (xOffset > 0) {
-              childContent.style.transform = `translateX(${xOffset}px)`;
-            }
-            const horizontalLength = 30 + xOffset * 0.5;
-            const cornerRadius = 24;
-            const midX = pX + horizontalLength;
 
-            let d;
-            if (Math.abs(pY - cY) <= cornerRadius * 2) {
-              d = `M ${pX} ${pY} L ${cX} ${cY}`;
-            } else if (pY < cY) {
-              const horizontalEnd = Math.min(midX + cornerRadius, cX);
-              d = `
-									M ${pX} ${pY}
-									L ${midX - cornerRadius} ${pY}
-									Q ${midX} ${pY} ${midX} ${pY + cornerRadius}
-									L ${midX} ${cY - cornerRadius}
-									Q ${midX} ${cY} ${horizontalEnd} ${cY}
-									L ${cX} ${cY}
-								`;
-            } else {
-              const horizontalEnd = Math.min(midX + cornerRadius, cX);
-              d = `
-									M ${pX} ${pY}
-									L ${midX - cornerRadius} ${pY}
-									Q ${midX} ${pY} ${midX} ${pY - cornerRadius}
-									L ${midX} ${cY + cornerRadius}
-									Q ${midX} ${cY} ${horizontalEnd} ${cY}
-									L ${cX} ${cY}
-								`;
-            }
-            const path = document.createElementNS(
-              "http://www.w3.org/2000/svg",
-              "path"
+            // Use TransformUtils for conditional transform application
+            TransformUtils.applyConditionalTranslateX(childContent, xOffset);
+
+            // Use TransformUtils to calculate path and create SVG element
+            const pathData = TransformUtils.calculatePathData(
+              pX,
+              pY,
+              cX,
+              cY,
+              xOffset
             );
-            path.setAttribute("d", d);
-            const isFolderToFolder =
-              parentLi.classList.contains("folder") &&
-              childLi.classList.contains("folder");
-
-            if (isFolderToFolder) {
-              path.setAttribute("stroke", "slategray");
-              path.setAttribute("stroke-dasharray", "3, 3");
-              path.setAttribute("stroke-opacity", "0.8");
-            } else {
-              path.setAttribute("stroke", childColor);
-              path.setAttribute("stroke-opacity", "0.8");
-            }
-
-            path.setAttribute("stroke-width", "2");
-            path.setAttribute("fill", "none");
-
-            path.setAttribute(
-              "data-parent-id",
-              parentLi.getAttribute("data-id")
+            const path = TransformUtils.createConnectionPath(
+              pathData,
+              childColor,
+              parentLi,
+              childLi
             );
-            path.setAttribute("data-child-id", childLi.getAttribute("data-id"));
 
             svg.appendChild(path);
           });

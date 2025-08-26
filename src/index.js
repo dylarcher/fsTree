@@ -15,6 +15,11 @@ import {
   generateMinimalStyles,
   generateStyles,
 } from "./services/styleGenerator.js";
+import {
+  generateFormattedTextTree,
+  generateMinimalTextTree,
+  generateTextTree as generateTextTreeInternal,
+} from "./services/textGenerator.js";
 import { createConfig } from "./shared/configAdjuster.js";
 import { getDirname, resolvePath } from "./utils/fileSystem.js";
 import {
@@ -77,6 +82,24 @@ export class FileTree {
    */
   generateJS(minimal = false) {
     return minimal ? generateMinimalScript() : generateInlineScript();
+  }
+
+  /**
+   * Generates text-based tree representation
+   */
+  generateText(options = {}) {
+    if (!this.rootNode) this.build();
+    const { format = "standard", ...textOptions } = options;
+
+    switch (format) {
+      case "minimal":
+        return generateMinimalTextTree(this.rootNode);
+      case "formatted":
+        return generateFormattedTextTree(this.rootNode, textOptions);
+      case "standard":
+      default:
+        return generateTextTreeInternal(this.rootNode, textOptions);
+    }
   }
 
   /**
@@ -231,6 +254,14 @@ export function generateMarkup(rootDir, options = {}) {
   return tree.generateHTML();
 }
 
+/**
+ * Quick function to generate text-based tree
+ */
+export function generateTextTree(rootDir, options = {}) {
+  const tree = new FileTree(rootDir, options);
+  return tree.generateText(options);
+}
+
 export { setupEventListeners } from "./core/eventManagment.js";
 export { drawConnectionLines } from "./core/pathCoordinator.js";
 export {
@@ -241,3 +272,4 @@ export {
 } from "./core/treeConstructor.js";
 export * from "./shared/configPresets.js";
 export * from "./shared/constants.js";
+
