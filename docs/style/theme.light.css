@@ -1,0 +1,20 @@
+@media (prefers-color-scheme: light) {
+	:root {
+		--white: var(--lightWhite, #f8f8ff);
+		--black: var(--lightBlack, #2f4f4f);
+		--blue: var(--lightBlue, #6c8eef);
+		--cyan: var(--lightCyan, #3a97d4);
+		--gold: var(--lightGold, #ffd700);
+		--gray: var(--lightGray, #8e8e8e);
+		--green: var(--lightGreen, #1ea672);
+		--maroon: var(--lightMaroon, #9c3f3f);
+		--olive: var(--lightOlive, #808000);
+		--orange: var(--lightOrange, #e56f4a);
+		--pink: var(--lightPink, #c96ed0);
+		--purple: var(--lightPurple, #9c82db);
+		--red: var(--lightRed, #ed5f74);
+		--slate: var(--lightSlate, #8792a2);
+		--violet: var(--lightViolet, #4a50aa);
+		--yellow: var(--lightYellow, #d9a217);
+	}
+}

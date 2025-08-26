@@ -1,0 +1,21 @@
+@media (prefers-color-scheme: dark) {
+	:root {
+		--white: var(--darkBlack, #1a3737);
+		--blue: var(--darkBlue, #5469d4);
+		--cyan: var(--darkCyan, #067ab8);
+		--gold: var(--darkGold, #daa520);
+		--gray: var(--darkGray, #787878);
+		--green: var(--darkGreen, #09825d);
+		--maroon: var(--darkMaroon, #741f1f);
+		--olive: var(--darkOlive, #556b2f);
+		--orange: var(--darkOrange, #c44c34);
+		--pink: var(--darkPink, #a450b5);
+		--pink: var(--darkPink, #ec4899);
+		--purple: var(--darkPurple, #8260c3);
+		--red: var(--darkRed, #cd3d64);
+		--slate: var(--darkSlate, #697386);
+		--violet: var(--darkViolet, #6c68ee);
+		--white: var(--darkWhite, #dfe2e8);
+		--yellow: var(--darkYellow, #bb8704);
+	}
+}

@@ -1,20 +1,33 @@
 {
-	"name": "mapesm",
-	"version": "1.0.0",
-	"description": "A CLI tool to generate a file hierarchy diagram.",
-	"type": "module",
-	"bin": {
-		"mapesm": "./bin/cli.js"
-	},
-	"scripts": {
-		"start": "node bin/cli.js"
-	},
-	"keywords": [
-		"cli",
-		"file",
-		"hierarchy",
-		"diagram"
-	],
-	"author": "",
-	"license": "ISC"
+  "name": "mapesm",
+  "version": "1.0.0",
+  "description": "A CLI tool to generate a file hierarchy diagram.",
+  "type": "module",
+  "bin": {
+    "mapesm": "./bin/cli.js"
+  },
+  "scripts": {
+    "start": "node bin/cli.js",
+    "serve": "live-server --port 9000",
+    "build:types": "tsc --project tsconfig.types.json && echo 'export * from \"**/types/jsdocs.js\";' > src/shared/types/index.d.ts",
+    "clean:types": "rm -rf src/shared/types/*.d.ts"
+  },
+  "keywords": [
+    "cli",
+    "file",
+    "hierarchy",
+    "diagram"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "1.2.2",
+    "typescript": "5.9.2"
+  },
+  "overrides": {
+    "braces": "^3.0.3",
+    "chokidar": "^3.6.0",
+    "micromatch": "^4.0.8",
+    "readdirp": "^3.6.0"
+  }
 }

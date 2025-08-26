@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" id="check-list">
-  <line x1="35.704" x2="164.096" y1="49.882" y2="49.882" fill="none" stroke="#050b1e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="13"></line>
-  <line x1="35.904" x2="164.296" y1="99.9" y2="99.9" fill="none" stroke="#050b1e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="13"></line>
-  <line x1="35.904" x2="100.1" y1="150.118" y2="150.118" fill="none" stroke="#050b1e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="13"></line>
-  <polyline fill="none" stroke="#050b1e" stroke-linecap="round" stroke-linejoin="round" stroke-width="13" points="127.49 139.512 140.347 152.56 164.509 128.397"></polyline>
-</svg>

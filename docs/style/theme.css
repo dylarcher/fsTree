@@ -1,0 +1,22 @@
+@import "theme.light.css";
+@import "theme.dark.css";
+@import "theme.modern.css";
+
+:root {
+  --white: ghostwhite;
+  --black: darkslategray;
+  --blue: dodgerblue;
+  --cyan: turquoise;
+  --gold: goldenrod;
+  --gray: silver;
+  --green: mediumseagreen;
+  --maroon: indianred;
+  --olive: olive;
+  --orange: darkorange;
+  --pink: hotpink;
+  --purple: mediumpurple;
+  --red: crimson;
+  --slate: slategray;
+  --violet: mediumslateblue;
+  --yellow: gold;
+}

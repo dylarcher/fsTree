@@ -1,0 +1,1032 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Hierarchy Diagram</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style/global.css" />
+    <script defer src="main.js"></script>
+  </head>
+  <body class="main-body">
+    <div class="container">
+      <h1 class="main-title">Project File Structure</h1>
+
+      <div id="diagram-container" class="diagram-container">
+        <svg id="svg-container" xmlns="http://www.w3.org/2000/svg"></svg>
+
+        <ul class="hierarchy-list" data-level="0">
+          <li
+            data-id="root"
+            class="folder"
+            aria-expanded="true"
+            data-route="root/"
+          >
+            <div class="node-content">
+              <svg
+                class="icon icon-collapsed dir"
+                aria-expanded="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <g fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M9.05 2c.93-.01 1.8.42 2.37 1.15l.88 1.17c.28.35.7.56 1.15.56h3.07c3.69 0 5.49 1.97 5.48 6.01v4.87c0 3.86-2.38 6.24-6.25 6.24H8.24C4.39 22 2 19.62 2 15.75V8.24c0-1.33.19-2.45.57-3.36C3.37 2.97 5 2 7.47 2h1.58Zm9.58 12.79h-5.26a.74.74 0 0 0-.75.75c0 .41.33.75.75.75h5.26a.75.75 0 0 0 .69-1.04.74.74 0 0 0-.69-.46Z"
+                    clip-rule="evenodd"
+                  />
+                  <path
+                    d="M10.92 2.66A2.67 2.67 0 0 0 9.08 2H7.5c-2.47 0-4.1.97-4.9 2.88h10.79s-.6-.02-.97-.43c-.37-.4-.85-1.26-1.5-1.79Z"
+                  />
+                </g>
+              </svg>
+              <svg class="icon icon-expanded dir" aria-expanded="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <g fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M9.05 2c.93-.01 1.8.42 2.37 1.15l.88 1.17c.28.35.7.56 1.15.56h3.07c3.69 0 5.49 1.97 5.48 6.01v4.87c0 3.86-2.38 6.24-6.25 6.24H8.24C4.39 22 2 19.62 2 15.75V8.24c0-1.33.19-2.45.57-3.36C3.37 2.97 5 2 7.47 2h1.58Zm6.94 10.16a.75.75 0 0 0-.75.75v1.88h-1.87a.74.74 0 0 0-.75.75c0 .41.33.75.75.75h1.87v1.88c0 .41.34.75.75.75a.74.74 0 0 0 .75-.75V16.3h1.89a.75.75 0 0 0 .69-1.04.74.74 0 0 0-.69-.46h-1.89v-1.88a.74.74 0 0 0-.75-.75Z"
+                    clip-rule="evenodd" />
+                  <path
+                    d="M10.92 2.66A2.67 2.67 0 0 0 9.08 2H7.5c-2.47 0-4.1.97-4.9 2.88h10.79s-.6-.02-.97-.43c-.37-.4-.85-1.26-1.5-1.79Z" />
+                </g>
+              </svg>
+              <span>root/</span>
+            </div>
+            <ul data-level="1">
+              <li
+                data-id="github"
+                class="folder"
+                aria-expanded="false"
+                data-route="root/.github/"
+              >
+                <div class="node-content">
+                  <svg
+                    class="icon icon-collapsed dir"
+                    aria-expanded="false"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <g fill="currentColor">
+                      <path
+                        fill-rule="evenodd"
+                        d="M9.05 2c.93-.01 1.8.42 2.37 1.15l.88 1.17c.28.35.7.56 1.15.56h3.07c3.69 0 5.49 1.97 5.48 6.01v4.87c0 3.86-2.38 6.24-6.25 6.24H8.24C4.39 22 2 19.62 2 15.75V8.24c0-1.33.19-2.45.57-3.36C3.37 2.97 5 2 7.47 2h1.58Zm9.58 12.79h-5.26a.74.74 0 0 0-.75.75c0 .41.33.75.75.75h5.26a.75.75 0 0 0 .69-1.04.74.74 0 0 0-.69-.46Z"
+                        clip-rule="evenodd"
+                      />
+                      <path
+                        d="M10.92 2.66A2.67 2.67 0 0 0 9.08 2H7.5c-2.47 0-4.1.97-4.9 2.88h10.79s-.6-.02-.97-.43c-.37-.4-.85-1.26-1.5-1.79Z"
+                      />
+                    </g>
+                  </svg>
+                  <svg class="icon icon-expanded dir" aria-expanded="false">
+                    <use xlink:href="#_iconDir" />
+                  </svg>
+                  <span>.github/</span>
+                </div>
+                <ul data-level="2">
+                  <li
+                    data-id="github-pr-template"
+                    class="folder"
+                    data-route="root/.github/PULL_REQUEST_TEMPLATE/"
+                  >
+                    <div class="node-content">
+                      <svg
+                        class="icon icon-collapsed dir"
+                        aria-expanded="false"
+                      >
+                        <use xlink:href="#_iconFolder" />
+                      </svg>
+                      <svg class="icon icon-expanded dir" aria-expanded="false">
+                        <use xlink:href="#_iconDir" />
+                      </svg>
+                      <span>PULL_REQUEST_TEMPLATE/</span>
+                    </div>
+                    <ul data-level="3">
+                      <li
+                        data-id="github-pr-bug"
+                        class="file"
+                        data-route="root/.github/PULL_REQUEST_TEMPLATE/bug_report.yml"
+                      >
+                        <div class="node-content">
+                          <svg class="icon yml">
+                            <use xlink:href="#_iconFile" /></svg
+                          ><span>bug_report.yml</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="github-pr-feature"
+                        class="file"
+                        data-route="root/.github/PULL_REQUEST_TEMPLATE/feature_request.yml"
+                      >
+                        <div class="node-content">
+                          <svg class="icon yml">
+                            <use xlink:href="#_iconFile" /></svg
+                          ><span>feature_request.yml</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    data-id="github-workflows"
+                    class="folder"
+                    data-route="root/.github/workflows/"
+                  >
+                    <div class="node-content">
+                      <svg
+                        class="icon icon-collapsed dir"
+                        aria-expanded="false"
+                      >
+                        <use xlink:href="#_iconFolder" />
+                      </svg>
+                      <svg class="icon icon-expanded dir" aria-expanded="false">
+                        <use xlink:href="#_iconDir" />
+                      </svg>
+                      <span>workflows/</span>
+                    </div>
+                    <ul data-level="3">
+                      <li
+                        data-id="github-workflows-ci"
+                        class="config"
+                        data-route="root/.github/workflows/ci.yml"
+                      >
+                        <div class="node-content">
+                          <svg class="icon yml">
+                            <use xlink:href="#_iconCog" /></svg
+                          ><span>ci.yml</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    data-id="github-coc"
+                    class="docs"
+                    data-route="root/.github/CODE_OF_CONDUCT.md"
+                  >
+                    <div class="node-content">
+                      <svg class="icon md">
+                        <use xlink:href="#_iconDocs" /></svg
+                      ><span>CODE_OF_CONDUCT.md</span>
+                    </div>
+                  </li>
+                  <li
+                    data-id="github-gov"
+                    class="docs"
+                    data-route="root/.github/GOVERNANCE.md"
+                  >
+                    <div class="node-content">
+                      <svg class="icon md">
+                        <use xlink:href="#_iconDocs" /></svg
+                      ><span>GOVERNANCE.md</span>
+                    </div>
+                  </li>
+                  <li
+                    data-id="github-sec"
+                    class="docs"
+                    data-route="root/.github/SECURITY.md"
+                  >
+                    <div class="node-content">
+                      <svg class="icon md">
+                        <use xlink:href="#_iconDocs" /></svg
+                      ><span>SECURITY.md</span>
+                    </div>
+                  </li>
+                  <li
+                    data-id="github-pr-readme"
+                    class="docs"
+                    data-route="root/.github/PULL_REQUEST_TEMPLATE.md"
+                  >
+                    <div class="node-content">
+                      <svg class="icon md">
+                        <use xlink:href="#_iconDocs" /></svg
+                      ><span>PULL_REQUEST_TEMPLATE.md</span>
+                    </div>
+                  </li>
+                  <li
+                    data-id="github-readme"
+                    class="docs"
+                    data-route="root/.github/README.md"
+                  >
+                    <div class="node-content">
+                      <svg class="icon md">
+                        <use xlink:href="#_iconDocs" /></svg
+                      ><span>README.md</span>
+                    </div>
+                  </li>
+                  <li
+                    data-id="github-dep"
+                    class="config"
+                    data-route="root/.github/dependabot.yml"
+                  >
+                    <div class="node-content">
+                      <svg class="icon yml">
+                        <use xlink:href="#_iconCog" /></svg
+                      ><span>dependabot.yml</span>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li
+                data-id="vscode"
+                class="folder"
+                aria-expanded="false"
+                data-route="root/.vscode/"
+              >
+                <div class="node-content">
+                  <svg class="icon icon-collapsed dir" aria-expanded="false">
+                    <use xlink:href="#_iconFolder" />
+                  </svg>
+                  <svg class="icon icon-expanded dir" aria-expanded="false">
+                    <use xlink:href="#_iconDir" />
+                  </svg>
+                  <span>.vscode/</span>
+                </div>
+                <ul data-level="2">
+                  <li
+                    data-id="vscode-launch"
+                    class="config"
+                    data-route="root/.vscode/launch.json"
+                  >
+                    <div class="node-content">
+                      <svg class="icon json">
+                        <use xlink:href="#_iconCog" /></svg
+                      ><span>launch.json</span>
+                    </div>
+                  </li>
+                  <li
+                    data-id="vscode-readme"
+                    class="docs"
+                    data-route="root/.vscode/README.md"
+                  >
+                    <div class="node-content">
+                      <svg class="icon md">
+                        <use xlink:href="#_iconDocs" /></svg
+                      ><span>README.md</span>
+                    </div>
+                  </li>
+                  <li
+                    data-id="vscode-settings"
+                    class="config"
+                    data-route="root/.vscode/settings.json"
+                  >
+                    <div class="node-content">
+                      <svg class="icon json">
+                        <use xlink:href="#_iconCog" /></svg
+                      ><span>settings.json</span>
+                    </div>
+                  </li>
+                  <li
+                    data-id="vscode-tasks"
+                    class="config"
+                    data-route="root/.vscode/tasks.json"
+                  >
+                    <div class="node-content">
+                      <svg class="icon json">
+                        <use xlink:href="#_iconCog" /></svg
+                      ><span>tasks.json</span>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li
+                data-id="assets"
+                class="folder"
+                aria-expanded="false"
+                data-route="root/assets/"
+              >
+                <div class="node-content">
+                  <svg class="icon icon-collapsed dir" aria-expanded="false">
+                    <use xlink:href="#_iconFolder" />
+                  </svg>
+                  <svg class="icon icon-expanded dir" aria-expanded="false">
+                    <use xlink:href="#_iconDir" />
+                  </svg>
+                  <span>assets/</span>
+                </div>
+                <ul data-level="2">
+                  <li
+                    data-id="assets-icons"
+                    class="folder"
+                    data-route="root/assets/icons/"
+                  >
+                    <div class="node-content">
+                      <svg
+                        class="icon icon-collapsed dir"
+                        aria-expanded="false"
+                      >
+                        <use xlink:href="#_iconFolder" />
+                      </svg>
+                      <svg class="icon icon-expanded dir" aria-expanded="false">
+                        <use xlink:href="#_iconDir" />
+                      </svg>
+                      <span>icons/</span>
+                    </div>
+                    <ul data-level="3">
+                      <li
+                        data-id="assets-icons-file"
+                        class="vector"
+                        data-route="root/assets/icons/file.svg"
+                      >
+                        <div class="node-content">
+                          <svg class="icon svg">
+                            <use xlink:href="#_iconVector" /></svg
+                          ><span>file.svg</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="assets-icons-folder"
+                        class="vector"
+                        data-route="root/assets/icons/folder.svg"
+                      >
+                        <div class="node-content">
+                          <svg class="icon svg">
+                            <use xlink:href="#_iconVector" /></svg
+                          ><span>folder.svg</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="assets-icons-readme"
+                        class="docs"
+                        data-route="root/assets/icons/README.md"
+                      >
+                        <div class="node-content">
+                          <svg class="icon md">
+                            <use xlink:href="#_iconDocs" /></svg
+                          ><span>README.md</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    data-id="assets-img"
+                    class="folder"
+                    data-route="root/assets/img/"
+                  >
+                    <div class="node-content">
+                      <svg
+                        class="icon icon-collapsed dir"
+                        aria-expanded="false"
+                      >
+                        <use xlink:href="#_iconFolder" />
+                      </svg>
+                      <svg class="icon icon-expanded dir" aria-expanded="false">
+                        <use xlink:href="#_iconDir" />
+                      </svg>
+                      <span>img/</span>
+                    </div>
+                    <ul data-level="3">
+                      <li
+                        data-id="assets-img-brand"
+                        class="image"
+                        data-route="root/assets/img/brand.avif"
+                      >
+                        <div class="node-content">
+                          <svg class="icon avif">
+                            <use xlink:href="#_iconPhoto" /></svg
+                          ><span>brand.avif</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="assets-img-logo"
+                        class="image"
+                        data-route="root/assets/img/logo.webp"
+                      >
+                        <div class="node-content">
+                          <svg class="icon webp">
+                            <use xlink:href="#_iconPhoto" /></svg
+                          ><span>logo.webp</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="assets-img-readme"
+                        class="docs"
+                        data-route="root/assets/img/README.md"
+                      >
+                        <div class="node-content">
+                          <svg class="icon md">
+                            <use xlink:href="#_iconDocs" /></svg
+                          ><span>README.md</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    data-id="assets-media"
+                    class="folder"
+                    data-route="root/assets/media/"
+                  >
+                    <div class="node-content">
+                      <svg
+                        class="icon icon-collapsed dir"
+                        aria-expanded="false"
+                      >
+                        <use xlink:href="#_iconFolder" />
+                      </svg>
+                      <svg class="icon icon-expanded dir" aria-expanded="false">
+                        <use xlink:href="#_iconDir" />
+                      </svg>
+                      <span>media/</span>
+                    </div>
+                    <ul data-level="3">
+                      <li
+                        data-id="assets-media-bg"
+                        class="image"
+                        data-route="root/assets/media/bg.webp"
+                      >
+                        <div class="node-content">
+                          <svg class="icon webp">
+                            <use xlink:href="#_iconPhoto" /></svg
+                          ><span>bg.webp</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="assets-media-epic"
+                        class="image"
+                        data-route="root/assets/media/epic.avif"
+                      >
+                        <div class="node-content">
+                          <svg class="icon avif">
+                            <use xlink:href="#_iconPhoto" /></svg
+                          ><span>epic.avif</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="assets-media-readme"
+                        class="docs"
+                        data-route="root/assets/media/README.md"
+                      >
+                        <div class="node-content">
+                          <svg class="icon md">
+                            <use xlink:href="#_iconDocs" /></svg
+                          ><span>README.md</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li
+                data-id="docs"
+                class="folder"
+                aria-expanded="false"
+                data-route="root/docs/"
+              >
+                <div class="node-content">
+                  <svg class="icon dir icon-collapsed" aria-expanded="false">
+                    <use xlink:href="#_iconFolder" />
+                  </svg>
+                  <svg class="icon dir icon-expanded" aria-expanded="false">
+                    <use xlink:href="#_iconDir" />
+                  </svg>
+                  <span>docs/</span>
+                </div>
+                <ul data-level="2">
+                  <li
+                    data-id="docs-readme"
+                    class="link"
+                    data-route="root/docs/index.html"
+                  >
+                    <div class="node-content">
+                      <svg class="icon html">
+                        <use xlink:href="#_iconLink" /></svg
+                      ><span>index.html</span>
+                    </div>
+                  </li>
+                  <li
+                    data-id="docs-readme"
+                    class="docs"
+                    data-route="root/docs/README.md"
+                  >
+                    <div class="node-content">
+                      <svg class="icon md">
+                        <use xlink:href="#_iconDocs" /></svg
+                      ><span>README.md</span>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li
+                data-id="public"
+                class="folder"
+                aria-expanded="false"
+                data-route="root/public/"
+              >
+                <div class="node-content">
+                  <svg class="icon icon-collapsed dir" aria-expanded="false">
+                    <use xlink:href="#_iconFolder" />
+                  </svg>
+                  <svg class="icon icon-expanded dir" aria-expanded="false">
+                    <use xlink:href="#_iconDir" />
+                  </svg>
+                  <span>public/</span>
+                </div>
+                <ul data-level="2">
+                  <li
+                    data-id="public-apple"
+                    class="image"
+                    data-route="root/public/apple-touch-icon.png"
+                  >
+                    <div class="node-content">
+                      <svg class="icon png">
+                        <use xlink:href="#_iconPhoto" /></svg
+                      ><span>apple-touch-icon.png</span>
+                    </div>
+                  </li>
+                  <li
+                    data-id="public-favicon-ico"
+                    class="vector"
+                    data-route="root/public/favicon.ico"
+                  >
+                    <div class="node-content">
+                      <svg class="icon ico">
+                        <use xlink:href="#_iconVector" /></svg
+                      ><span>favicon.ico</span>
+                    </div>
+                  </li>
+                  <li data-id="public-favicon-svg" class="vector">
+                    <div class="node-content">
+                      <svg class="icon svg">
+                        <use xlink:href="#_iconVector" /></svg
+                      ><span>favicon.svg</span>
+                    </div>
+                  </li>
+                  <li data-id="public-google" class="image">
+                    <div class="node-content">
+                      <svg class="icon png">
+                        <use xlink:href="#_iconPhoto" /></svg
+                      ><span>google-touch-icon.png</span>
+                    </div>
+                  </li>
+                  <li
+                    data-id="public-manifest"
+                    class="config"
+                    data-route="root/public/manifest.json"
+                  >
+                    <div class="node-content">
+                      <svg class="icon json">
+                        <use xlink:href="#_iconCog" /></svg
+                      ><span>manifest.json</span>
+                    </div>
+                  </li>
+                  <li data-id="public-mask" class="vector">
+                    <div class="node-content">
+                      <svg class="icon svg">
+                        <use xlink:href="#_iconVector" /></svg
+                      ><span>mask-icon.svg</span>
+                    </div>
+                  </li>
+                  <li
+                    data-id="public-readme"
+                    class="docs"
+                    data-route="root/public/README.md"
+                  >
+                    <div class="node-content">
+                      <svg class="icon md">
+                        <use xlink:href="#_iconDocs" /></svg
+                      ><span>README.md</span>
+                    </div>
+                  </li>
+                  <li data-id="public-webmanifest" class="config">
+                    <div class="node-content">
+                      <svg class="icon webmanifest">
+                        <use xlink:href="#_iconCog" /></svg
+                      ><span>site.webmanifest</span>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li
+                data-id="src"
+                class="folder"
+                aria-expanded="true"
+                data-route="root/src/"
+              >
+                <div class="node-content">
+                  <svg class="icon icon-collapsed dir" aria-expanded="true">
+                    <use xlink:href="#_iconFolder" />
+                  </svg>
+                  <svg class="icon icon-expanded dir" aria-expanded="true">
+                    <use xlink:href="#_iconDir" />
+                  </svg>
+                  <span>src/</span>
+                </div>
+                <ul data-level="2">
+                  <li
+                    data-id="src-helpers"
+                    class="folder"
+                    aria-expanded="true"
+                    data-route="root/src/helpers/"
+                  >
+                    <div class="node-content">
+                      <svg class="icon icon-collapsed dir" aria-expanded="true">
+                        <use xlink:href="#_iconFolder" />
+                      </svg>
+                      <svg class="icon icon-expanded dir" aria-expanded="true">
+                        <use xlink:href="#_iconDir" />
+                      </svg>
+                      <span>helpers/</span>
+                    </div>
+                    <ul data-level="3">
+                      <li
+                        data-id="src-helpers-wcag"
+                        class="script"
+                        data-route="root/src/helpers/a11y.js"
+                      >
+                        <div class="node-content">
+                          <svg class="icon js">
+                            <use xlink:href="#_iconScript" /></svg
+                          ><span>a11y.js</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="src-helpers-readme"
+                        class="docs"
+                        data-route="root/src/helpers/README.md"
+                      >
+                        <div class="node-content">
+                          <svg class="icon md">
+                            <use xlink:href="#_iconDocs" /></svg
+                          ><span>README.md</span>
+                        </div>
+                      </li>
+                      <li data-id="src-helpers-base" class="script">
+                        <div class="node-content">
+                          <svg class="icon js">
+                            <use xlink:href="#_iconScript" /></svg
+                          ><span>state.js</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    data-id="src-services"
+                    class="folder"
+                    aria-expanded="true"
+                  >
+                    <div class="node-content">
+                      <svg class="icon icon-collapsed dir" aria-expanded="true">
+                        <use xlink:href="#_iconFolder" />
+                      </svg>
+                      <svg class="icon icon-expanded dir" aria-expanded="true">
+                        <use xlink:href="#_iconDir" />
+                      </svg>
+                      <span>services/</span>
+                    </div>
+                    <ul data-level="3">
+                      <li
+                        data-id="src-services-wcag"
+                        class="script"
+                        data-route="root/src/services/hooks.js"
+                      >
+                        <div class="node-content">
+                          <svg class="icon js">
+                            <use xlink:href="#_iconScript" /></svg
+                          ><span>hooks.js</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="src-services-base"
+                        class="script"
+                        data-route="root/src/styles/reset.css"
+                      >
+                        <div class="node-content">
+                          <svg class="icon js">
+                            <use xlink:href="#_iconScript" /></svg
+                          ><span>mixins.js</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="src-services-readme"
+                        class="docs"
+                        data-route="root/src/styles/README.md"
+                      >
+                        <div class="node-content">
+                          <svg class="icon md">
+                            <use xlink:href="#_iconDocs" /></svg
+                          ><span>README.md</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    data-id="src-styles"
+                    class="folder"
+                    aria-expanded="true"
+                    data-route="root/src/styles/"
+                  >
+                    <div class="node-content">
+                      <svg class="icon icon-collapsed dir" aria-expanded="true">
+                        <use xlink:href="#_iconFolder" />
+                      </svg>
+                      <svg class="icon icon-expanded dir" aria-expanded="true">
+                        <use xlink:href="#_iconDir" />
+                      </svg>
+                      <span>styles/</span>
+                    </div>
+                    <ul data-level="3">
+                      <li
+                        data-id="src-services-base"
+                        class="style"
+                        data-route="root/src/styles/reset.css"
+                      >
+                        <div class="node-content">
+                          <svg class="icon css">
+                            <use xlink:href="#_iconStyle" /></svg
+                          ><span>reset.css</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="src-services-base"
+                        class="style"
+                        data-route="root/src/styles/reset.css"
+                      >
+                        <div class="node-content">
+                          <svg class="icon css">
+                            <use xlink:href="#_iconStyle" /></svg
+                          ><span>font.css</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="src-services-base"
+                        class="style"
+                        data-route="root/src/styles/reset.css"
+                      >
+                        <div class="node-content">
+                          <svg class="icon css">
+                            <use xlink:href="#_iconStyle" /></svg
+                          ><span>sizes.css</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="src-services-base"
+                        class="style"
+                        data-route="root/src/styles/reset.css"
+                      >
+                        <div class="node-content">
+                          <svg class="icon css">
+                            <use xlink:href="#_iconStyle" /></svg
+                          ><span>layout.css</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="src-services-base"
+                        class="style"
+                        data-route="root/src/styles/reset.css"
+                      >
+                        <div class="node-content">
+                          <svg class="icon css">
+                            <use xlink:href="#_iconStyle" /></svg
+                          ><span>canvas.css</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="src-services-readme"
+                        class="docs"
+                        data-route="root/src/styles/README.md"
+                      >
+                        <div class="node-content">
+                          <svg class="icon md">
+                            <use xlink:href="#_iconDocs" /></svg
+                          ><span>README.md</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="src-services-wcag"
+                        class="style"
+                        data-route="root/src/services/hooks.js"
+                      >
+                        <div class="node-content">
+                          <svg class="icon css">
+                            <use xlink:href="#_iconStyle" /></svg
+                          ><span>theme.css</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    data-id="src-shared"
+                    class="folder"
+                    aria-expanded="true"
+                    data-route="root/src/shared/"
+                  >
+                    <div class="node-content">
+                      <svg class="icon icon-collapsed dir" aria-expanded="true">
+                        <use xlink:href="#_iconFolder" />
+                      </svg>
+                      <svg class="icon icon-expanded dir" aria-expanded="true">
+                        <use xlink:href="#_iconDir" />
+                      </svg>
+                      <span>shared/</span>
+                    </div>
+                    <ul data-level="3">
+                      <li
+                        data-id="src-shared-const"
+                        class="script"
+                        data-route="root/src/shared/constants.js"
+                      >
+                        <div class="node-content">
+                          <svg class="icon js">
+                            <use xlink:href="#_iconScript" /></svg
+                          ><span>CONSTANTS.js</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="src-shared-readme"
+                        class="docs"
+                        data-route="root/src/shared/README.md"
+                      >
+                        <div class="node-content">
+                          <svg class="icon md">
+                            <use xlink:href="#_iconDocs" /></svg
+                          ><span>README.md</span>
+                        </div>
+                      </li>
+                      <li data-id="src-shared-tokens" class="script">
+                        <div class="node-content">
+                          <svg class="icon js">
+                            <use xlink:href="#_iconScript" /></svg
+                          ><span>designTokens.js</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    data-id="src-utils"
+                    class="folder"
+                    aria-expanded="true"
+                    data-route="root/src/utils/"
+                  >
+                    <div class="node-content">
+                      <svg class="icon icon-collapsed dir" aria-expanded="true">
+                        <use xlink:href="#_iconFolder" />
+                      </svg>
+                      <svg class="icon icon-expanded dir" aria-expanded="true">
+                        <use xlink:href="#_iconDir" />
+                      </svg>
+                      <span>utils/</span>
+                    </div>
+                    <ul data-level="3">
+                      <li
+                        data-id="src-utils-gen"
+                        class="script"
+                        data-route="root/src/utils/generators.js"
+                      >
+                        <div class="node-content">
+                          <svg class="icon js">
+                            <use xlink:href="#_iconScript" /></svg
+                          ><span>generators.js</span>
+                        </div>
+                      </li>
+                      <li data-id="src-utils-log" class="script">
+                        <div class="node-content">
+                          <svg class="icon js">
+                            <use xlink:href="#_iconScript" /></svg
+                          ><span>logger.js</span>
+                        </div>
+                      </li>
+                      <li
+                        data-id="src-utils-readme"
+                        class="docs"
+                        data-route="root/src/utils/README.md"
+                      >
+                        <div class="node-content">
+                          <svg class="icon md">
+                            <use xlink:href="#_iconDocs" /></svg
+                          ><span>README.md</span>
+                        </div>
+                      </li>
+                      <li data-id="src-utils-iter" class="script">
+                        <div class="node-content">
+                          <svg class="icon js">
+                            <use xlink:href="#_iconScript" /></svg
+                          ><span>iterators.js</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    data-id="src-index"
+                    class="link"
+                    data-route="root/src/index.js"
+                  >
+                    <div class="node-content">
+                      <svg class="icon html">
+                        <use xlink:href="#_iconLink" /></svg
+                      ><span>index.html</span>
+                    </div>
+                  </li>
+                  <li
+                    data-id="src-readme"
+                    class="docs"
+                    data-route="root/src/README.md"
+                  >
+                    <div class="node-content">
+                      <svg class="icon md">
+                        <use xlink:href="#_iconDocs" /></svg
+                      ><span>README.md</span>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li data-id="c8rc" class="preset">
+                <div class="node-content">
+                  <svg class="icon c8rc">
+                    <use xlink:href="#_iconConf" /></svg
+                  ><span>.c8rc</span>
+                </div>
+              </li>
+              <li data-id="editorconfig" class="preset">
+                <div class="node-content">
+                  <svg class="icon editorconfig">
+                    <use xlink:href="#_iconConf" /></svg
+                  ><span>.editorconfig</span>
+                </div>
+              </li>
+              <li data-id="gitattributes" class="preset">
+                <div class="node-content">
+                  <svg class="icon gitattributes">
+                    <use xlink:href="#_iconConf" /></svg
+                  ><span>.gitattributes</span>
+                </div>
+              </li>
+              <li data-id="gitignore" class="preset">
+                <div class="node-content">
+                  <svg class="icon gitignore">
+                    <use xlink:href="#_iconConf" /></svg
+                  ><span>.gitignore</span>
+                </div>
+              </li>
+              <li data-id="npmrc" class="preset">
+                <div class="node-content">
+                  <svg class="icon npmrc">
+                    <use xlink:href="#_iconConf" /></svg
+                  ><span>.npmrc</span>
+                </div>
+              </li>
+              <li data-id="nvmrc" class="preset">
+                <div class="node-content">
+                  <svg class="icon nvmrc">
+                    <use xlink:href="#_iconConf" /></svg
+                  ><span>.nvmrc</span>
+                </div>
+              </li>
+              <li data-id="citation" class="file">
+                <div class="node-content">
+                  <svg class="icon cff">
+                    <use xlink:href="#_iconFile" /></svg
+                  ><span>CITATION.cff</span>
+                </div>
+              </li>
+              <li data-id="readme" class="docs">
+                <div class="node-content">
+                  <svg class="icon md">
+                    <use xlink:href="#_iconDocs" /></svg
+                  ><span>README.md</span>
+                </div>
+              </li>
+              <li data-id="package" class="config">
+                <div class="node-content">
+                  <svg class="icon json">
+                    <use xlink:href="#_iconCog" /></svg
+                  ><span>package.json</span>
+                </div>
+              </li>
+              <li data-id="tsconfig" class="config">
+                <div class="node-content">
+                  <svg class="icon json">
+                    <use xlink:href="#_iconCog" /></svg
+                  ><span>tsconfig.json</span>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Dependency Diagram Modal -->
+    <div id="dependency-modal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <div class="modal-wrapper">
+          <!-- Header -->
+          <div class="modal-header">
+            <div class="modal-header-content">
+              <h2 id="dependency-title" class="modal-title">Dependencies</h2>
+              <button id="close-dependency-modal" class="modal-close-btn">
+                &times;
+              </button>
+            </div>
+          </div>
+
+          <!-- Dependency Tree Container -->
+          <div id="dependency-container" class="modal-body">
+            <div id="dependency-tree" class="dependency-tree-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
